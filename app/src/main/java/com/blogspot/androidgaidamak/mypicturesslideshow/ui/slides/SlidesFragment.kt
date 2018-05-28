@@ -61,10 +61,10 @@ class SlidesFragment : Fragment() {
                 viewModel?.startUpdatingImage()
             } else {
                 AlertDialog.Builder(activity!!)
-                        .setTitle("Permission is missing")
-                        .setMessage("For app to work it needs permission to read your storage.")
+                        .setTitle(R.string.dialog_permission_is_missilng_title)
+                        .setMessage(R.string.dialog_permission_is_missilng_message)
                         .setCancelable(false)
-                        .setPositiveButton("OK", { _, _ -> activity!!.finish() })
+                        .setPositiveButton(android.R.string.ok, { _, _ -> activity!!.finish() })
             }
         } else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults)

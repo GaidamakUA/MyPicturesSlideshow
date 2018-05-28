@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MyPicturesSlideshow</string>
+    <string name="preference_delay_betweend_slides_summary">How much time does it take to switch between slides in seconds</string>
+    <string name="preference_delay_betweend_slides_title">Delay between slides</string>
+    <string name="dialog_permission_is_missilng_title">Permission is missing</string>
+    <string name="dialog_permission_is_missilng_message">For app to work it needs permission to read your storage.</string>
+    <string name="item_settings_title">Settings</string>
 </resources>

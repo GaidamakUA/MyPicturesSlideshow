@@ -6,6 +6,6 @@
         android:entries="@array/available_delays"
         android:entryValues="@array/available_delays"
         android:key="delay_between_slides"
-        android:summary="How much time does it take to switch between slides in seconds"
-        android:title="Delay between slides" />
+        android:summary="@string/preference_delay_betweend_slides_summary"
+        android:title="@string/preference_delay_betweend_slides_title" />
 </PreferenceScreen>
