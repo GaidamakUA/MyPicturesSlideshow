@@ -3,10 +3,9 @@ Simple Android gallery slideshow application.
 
 Basically all it does is show clock on top of slide show of images from your phone with configurable delay.
 
-Takes advantage of Android Jetpack's:
+Takes advantage of [Android Jetpack's](https://developer.android.com/jetpack/):
 * Architecture
 * Navigation
-https://developer.android.com/jetpack/
 
 <img src="screenshots/screenshot_horizontal.png" width="50%" />
 <img src="screenshots/screenshot_vertical.png" width="25%" />
