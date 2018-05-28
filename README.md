@@ -8,8 +8,8 @@ Takes advantage of Android Jetpack's:
 * Navigation
 https://developer.android.com/jetpack/
 
-<img src="screenshots/screenshot-horizontal.png" width="50%" />
-<img src="screenshots/screenshot-vertical.png" width="25%" />
+<img src="screenshots/screenshot_horizontal.png" width="50%" />
+<img src="screenshots/screenshot_vertical.png" width="25%" />
 
 ## Build with
 * [Android Studio](https://developer.android.com/studio/) should also work in other IDEs
