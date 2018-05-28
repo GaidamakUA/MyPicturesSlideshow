@@ -7,11 +7,11 @@ import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.os.Handler
 import android.support.v7.preference.PreferenceManager
-import com.blogspot.androidgaidamak.mypicturesslideshow.data.ImageLiveData
+import com.blogspot.androidgaidamak.mypicturesslideshow.data.LocalImagesLiveData
 
 
 class SlidesViewModel(private val context: Application) : AndroidViewModel(context), SharedPreferences.OnSharedPreferenceChangeListener {
-    private val imageLiveData = ImageLiveData(context)
+    private val imageLiveData = LocalImagesLiveData(context)
     private val handler = Handler()
     private var frameSwitchDelay: Long
 

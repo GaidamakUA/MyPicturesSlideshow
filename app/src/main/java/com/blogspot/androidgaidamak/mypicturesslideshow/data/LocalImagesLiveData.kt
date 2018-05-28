@@ -9,7 +9,7 @@ import android.os.AsyncTask
 import android.provider.MediaStore
 import java.io.File
 
-public class ImageLiveData(private val context: Application) : LiveData<Bitmap?>() {
+public class LocalImagesLiveData(private val context: Application) : LiveData<Bitmap?>() {
     private lateinit var imagePaths: List<String>
     private var currentImagePathIndex = 0
 
@@ -18,14 +18,15 @@ public class ImageLiveData(private val context: Application) : LiveData<Bitmap?>
         currentImagePathIndex++
     }
 
+    // TODO Make this class static and remove vararg parameters
     private inner class LoadNextImageTask : AsyncTask<Int, Void, Bitmap?>() {
         override fun doInBackground(vararg params: Int?): Bitmap? {
             if (!::imagePaths.isInitialized) {
                 initImagePaths()
             }
-            val imagePathIndex = params[0]
+            val imagePathIndex: Int = params[0]!! % imagePaths.size
 
-            return if (imagePaths.size > imagePathIndex!!) {
+            return if (imagePaths.size > imagePathIndex) {
                 val uri = Uri.fromFile(File(imagePaths[imagePathIndex]))
                 val bitmapStream = context.contentResolver.openInputStream(uri)
                 BitmapFactory.decodeStream(bitmapStream)
