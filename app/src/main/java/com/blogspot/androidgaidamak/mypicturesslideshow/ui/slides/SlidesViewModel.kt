@@ -3,15 +3,17 @@ package com.blogspot.androidgaidamak.mypicturesslideshow.ui.slides
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.Transformations
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.os.Handler
 import android.support.v7.preference.PreferenceManager
-import com.blogspot.androidgaidamak.mypicturesslideshow.data.LocalImagesLiveData
+import com.blogspot.androidgaidamak.mypicturesslideshow.data.RemoteImagesLiveData
 
 
-class SlidesViewModel(private val context: Application) : AndroidViewModel(context), SharedPreferences.OnSharedPreferenceChangeListener {
-    private val imageLiveData = LocalImagesLiveData(context)
+class SlidesViewModel(context: Application) : AndroidViewModel(context), SharedPreferences.OnSharedPreferenceChangeListener {
+    private val imageLiveData = RemoteImagesLiveData(context)//LocalImagesLiveData(context)
+    private val remoteImagesLiveData = RemoteImagesLiveData(context)
     private val handler = Handler()
     private var frameSwitchDelay: Long
 
@@ -22,7 +24,7 @@ class SlidesViewModel(private val context: Application) : AndroidViewModel(conte
         sharedPref.registerOnSharedPreferenceChangeListener(this)
     }
 
-    public fun getImageLiveData(): LiveData<Bitmap?> = imageLiveData
+    fun getImageLiveData(): LiveData<Bitmap?> = Transformations.map(imageLiveData, { wrapper -> wrapper.bitmap })
 
     fun startUpdatingImage() {
         postUpdateImage()
