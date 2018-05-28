@@ -53,10 +53,18 @@ public class CrossFadeView extends FrameLayout {
     public void showImage(Bitmap bitmap) {
         if (mFirstShowing) {
             mSecond.setImageBitmap(bitmap);
-            mSecond.animate().setInterpolator(interpolator).alpha(1f).setDuration(mFadeDelay);
+            mSecond.setScaleX(1.5f);
+            mSecond.setScaleY(1.5f);
+            mSecond.animate().setInterpolator(interpolator)
+                    .alpha(1f)
+                    .scaleX(1)
+                    .scaleY(1).setDuration(mFadeDelay);
         } else {
             mFirst.setImageBitmap(bitmap);
-            mSecond.animate().setInterpolator(interpolator).alpha(0f).setDuration(mFadeDelay);
+            mSecond.animate().setInterpolator(interpolator)
+                    .alpha(0f)
+                    .scaleX(1.5f)
+                    .scaleY(1.5f).setDuration(mFadeDelay);
         }
 
         mFirstShowing = !mFirstShowing;
