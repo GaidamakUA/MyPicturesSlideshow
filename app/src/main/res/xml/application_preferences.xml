@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:defaultValue="5"
+        android:entries="@array/available_delays"
+        android:entryValues="@array/available_delays"
+        android:key="delay_between_slides"
+        android:summary="How much time does it take to switch between slides in seconds"
+        android:title="Delay between slides" />
+</PreferenceScreen>

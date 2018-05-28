@@ -4,6 +4,7 @@ import android.Manifest
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
@@ -17,10 +18,7 @@ import kotlinx.android.synthetic.main.slides_fragment.*
 class SlidesFragment : Fragment() {
     private val READ_EXTERNAL_STORAGE_CODE_REQUEST_CODE = 0;
 
-    companion object {
-        fun newInstance() = SlidesFragment()
-    }
-
+    private val observer = Observer<Bitmap?> { bitmap -> image.showImage(bitmap) }
     private var viewModel: SlidesViewModel? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +28,7 @@ class SlidesFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        if (ContextCompat.checkSelfPermission(activity!!, Manifest.permission.WRITE_CALENDAR)
+        if (ContextCompat.checkSelfPermission(activity!!, Manifest.permission.READ_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_GRANTED) {
             initViewModelAndBind()
         } else {
@@ -52,7 +50,7 @@ class SlidesFragment : Fragment() {
 
     private fun initViewModelAndBind() {
         viewModel = ViewModelProviders.of(this).get(SlidesViewModel::class.java)
-        viewModel?.getImageLiveData()?.observe(this, Observer { bitmap -> image.showImage(bitmap) })
+        viewModel?.getImageLiveData()?.observe(this, observer)
         image.showImage(viewModel?.getImageLiveData()?.value)
     }
 

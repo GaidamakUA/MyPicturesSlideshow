@@ -3,7 +3,6 @@ package com.blogspot.androidgaidamak.mypicturesslideshow.utils;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
-import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -55,11 +54,9 @@ public class CrossFadeView extends FrameLayout {
         if (mFirstShowing) {
             mSecond.setImageBitmap(bitmap);
             mSecond.animate().setInterpolator(interpolator).alpha(1f).setDuration(mFadeDelay);
-            mFirst.animate().setInterpolator(interpolator).alpha(0f).setDuration(mFadeDelay);
         } else {
             mFirst.setImageBitmap(bitmap);
             mSecond.animate().setInterpolator(interpolator).alpha(0f).setDuration(mFadeDelay);
-            mFirst.animate().setInterpolator(interpolator).alpha(1f).setDuration(mFadeDelay);
         }
 
         mFirstShowing = !mFirstShowing;

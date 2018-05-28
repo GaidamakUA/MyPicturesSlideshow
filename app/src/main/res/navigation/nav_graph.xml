@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/slidesFragment">
+
+    <fragment
+        android:id="@+id/slidesFragment"
+        android:name="com.blogspot.androidgaidamak.mypicturesslideshow.ui.slides.SlidesFragment"
+        android:label="slides_fragment"
+        tools:layout="@layout/slides_fragment">
+        <action
+            android:id="@+id/action_showPreferences"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.blogspot.androidgaidamak.mypicturesslideshow.ui.slides.SettingsFragment"
+        android:label="SettingsFragment" />
+</navigation>
