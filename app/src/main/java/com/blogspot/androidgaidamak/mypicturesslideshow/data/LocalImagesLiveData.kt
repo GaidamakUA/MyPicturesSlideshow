@@ -1,7 +1,7 @@
 package com.blogspot.androidgaidamak.mypicturesslideshow.data
 
-import android.app.Application
 import android.arch.lifecycle.LiveData
+import android.content.ContentResolver
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -9,11 +9,11 @@ import android.os.AsyncTask
 import android.provider.MediaStore
 import java.io.File
 
-public class LocalImagesLiveData(private val context: Application) : LiveData<Bitmap?>() {
+class LocalImagesLiveData(private val contentResolver: ContentResolver) : LiveData<Bitmap?>(), ImageDataSource {
     private lateinit var imagePaths: List<String>
     private var currentImagePathIndex = 0
 
-    fun nextImage() {
+    override fun nextImage() {
         LoadNextImageTask().execute(currentImagePathIndex)
         currentImagePathIndex++
     }
@@ -28,7 +28,7 @@ public class LocalImagesLiveData(private val context: Application) : LiveData<Bi
 
             return if (imagePaths.size > imagePathIndex) {
                 val uri = Uri.fromFile(File(imagePaths[imagePathIndex]))
-                val bitmapStream = context.contentResolver.openInputStream(uri)
+                val bitmapStream = contentResolver.openInputStream(uri)
                 BitmapFactory.decodeStream(bitmapStream)
             } else {
                 null
@@ -42,7 +42,7 @@ public class LocalImagesLiveData(private val context: Application) : LiveData<Bi
 
     private fun initImagePaths() {
         val projection = arrayOf(MediaStore.Images.Media.DATA)
-        val cursor = context.contentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+        val cursor = contentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                 projection,
                 null,
                 null,
