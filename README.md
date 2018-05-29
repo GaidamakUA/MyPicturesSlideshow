@@ -1,7 +1,11 @@
 # MyPicturesSlideshow
 Simple Android gallery slideshow application. 
 
-Basically all it does is show clock on top of slide show of images from your phone with configurable delay.
+### Features
+* Shows random images from https://lorempixel.com
+* Shows pictures from your gallery if there are no connection
+* Analogue clock
+* Configurable delay between slides
 
 Takes advantage of [Android Jetpack's](https://developer.android.com/jetpack/):
 * Architecture
@@ -14,6 +18,7 @@ Takes advantage of [Android Jetpack's](https://developer.android.com/jetpack/):
 * [Android Studio](https://developer.android.com/studio/) should also work in other IDEs
 * [Kotlin](https://kotlinlang.org/)
 * [Gradle](https://gradle.org/)
+* [OkHttp](http://square.github.io/okhttp/)
 * [Custom Analog Clock View](https://github.com/rosenpin/custom-analog-clock-view)
 
 ## License
