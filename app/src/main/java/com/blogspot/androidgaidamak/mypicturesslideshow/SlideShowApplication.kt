@@ -2,7 +2,7 @@ package com.blogspot.androidgaidamak.mypicturesslideshow
 
 import android.app.Application
 import com.blogspot.androidgaidamak.mypicturesslideshow.data.ImagesRepository
-import com.blogspot.androidgaidamak.mypicturesslideshow.data.LocalImagesLiveData
+import com.blogspot.androidgaidamak.mypicturesslideshow.data.LocalMediaLiveData
 import com.blogspot.androidgaidamak.mypicturesslideshow.data.RemoteImagesLiveData
 import okhttp3.OkHttpClient
 
@@ -13,7 +13,7 @@ class SlideShowApplication : Application() {
         super.onCreate()
         
         val client = OkHttpClient()
-        val localDataSource = LocalImagesLiveData(this.contentResolver)
+        val localDataSource = LocalMediaLiveData(this.contentResolver)
         val remoteDataSource = RemoteImagesLiveData(client)
         imageRepository = ImagesRepository(localDataSource, remoteDataSource)
     }

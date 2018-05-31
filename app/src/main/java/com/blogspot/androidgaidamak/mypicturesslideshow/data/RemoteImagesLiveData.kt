@@ -6,10 +6,10 @@ import okhttp3.*
 import java.io.IOException
 
 
-class RemoteImagesLiveData(private val okhttpClient: OkHttpClient) : LiveData<BitmapErrorWrapper>(), ImageDataSource {
+class RemoteImagesLiveData(private val okhttpClient: OkHttpClient) : LiveData<BitmapErrorWrapper>() {
     private val nextImageRequest = Request.Builder().url("https://lorempixel.com/1000/1000/").build()
 
-    override fun nextImage() {
+    fun nextImage() {
         okhttpClient.newCall(nextImageRequest)
                 .enqueue(object : Callback {
                     override fun onFailure(call: Call?, e: IOException?) {
