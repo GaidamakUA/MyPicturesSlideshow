@@ -4,7 +4,6 @@ import android.Manifest
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
@@ -12,14 +11,13 @@ import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import com.blogspot.androidgaidamak.mypicturesslideshow.R
 import com.blogspot.androidgaidamak.mypicturesslideshow.data.MediaData
+import com.blogspot.androidgaidamak.mypicturesslideshow.utils.ViewController
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.ExtractorMediaSource
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
-import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import kotlinx.android.synthetic.main.slides_fragment.*
@@ -130,48 +128,4 @@ class SlidesFragment : Fragment() {
         }
     }
 
-    class ViewController(val imageBack: ImageView,
-                         val playerViewBack: PlayerView,
-                         val imageFront: ImageView,
-                         val playerViewFront: PlayerView) {
-        private var frontShowing: Boolean = true
-
-        fun isFrontShowing() = frontShowing
-
-        fun showImage(bitmap: Bitmap) {
-            if (frontShowing) {
-                playerViewBack.visibility = View.GONE
-                playerViewFront.visibility = View.GONE
-                imageFront.visibility = View.GONE
-
-                imageBack.visibility = View.VISIBLE
-                imageBack.setImageBitmap(bitmap)
-            } else {
-                playerViewFront.visibility = View.GONE
-                playerViewBack.visibility = View.GONE
-                imageBack.visibility = View.GONE
-
-                imageFront.visibility = View.VISIBLE
-                imageFront.setImageBitmap(bitmap)
-            }
-            frontShowing = !frontShowing
-        }
-
-        fun showVideo() {
-            if (frontShowing) {
-                imageFront.visibility = View.GONE
-                imageBack.visibility = View.GONE
-
-                playerViewFront.visibility = View.GONE
-                playerViewBack.visibility = View.VISIBLE
-            } else {
-                imageFront.visibility = View.GONE
-                imageBack.visibility = View.GONE
-
-                playerViewBack.visibility = View.GONE
-                playerViewFront.visibility = View.VISIBLE
-            }
-            frontShowing = !frontShowing
-        }
-    }
 }
