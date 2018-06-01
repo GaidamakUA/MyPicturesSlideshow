@@ -3,7 +3,7 @@ Simple Android gallery slideshow application.
 
 ### Features
 * Shows random images from https://lorempixel.com
-* Shows pictures from your gallery if there are no connection
+* Shows pictures and videos from your gallery if there are no connection (no transition animation for video yet)
 * Analogue clock
 * Configurable delay between slides
 
