@@ -4,10 +4,10 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import android.content.SharedPreferences
-import android.graphics.Bitmap
 import android.os.Handler
 import android.support.v7.preference.PreferenceManager
 import com.blogspot.androidgaidamak.mypicturesslideshow.SlideShowApplication
+import com.blogspot.androidgaidamak.mypicturesslideshow.data.MediaData
 
 
 class SlidesViewModel(context: Application) : AndroidViewModel(context), SharedPreferences.OnSharedPreferenceChangeListener {
@@ -22,7 +22,7 @@ class SlidesViewModel(context: Application) : AndroidViewModel(context), SharedP
         sharedPref.registerOnSharedPreferenceChangeListener(this)
     }
 
-    fun getImageLiveData(): LiveData<Bitmap?> = repository.getImageLiveData()
+    fun getMediaLiveData(): LiveData<MediaData> = repository.getImageLiveData()
 
     fun startUpdatingImage() {
         postUpdateImage()
